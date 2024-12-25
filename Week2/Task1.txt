@@ -1,0 +1,36 @@
+[
+  {
+    $match: {
+      Education: "Master"
+    }
+  },
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: "$Marital Status",
+        // Group by Marital Status
+        avgAge: {
+          $avg: "$Age"
+        },
+        minAge: {
+          $min: "$Age"
+        },
+        maxAge: {
+          $max: "$Age"
+        },
+        avgSalary: {
+          $avg: "$Salary"
+        },
+        minSalary: {
+          $min: "$Salary"
+        },
+        maxSalary: {
+          $max: "$Salary"
+        }
+      }
+  }
+]

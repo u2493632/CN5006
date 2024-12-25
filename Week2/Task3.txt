@@ -1,0 +1,31 @@
+[
+  {
+    $match:
+      /**
+       * query: The query in MQL.
+       */
+      {
+        Gender: "Male"
+      }
+  },
+  {
+    $group:
+      /**
+       * _id: The id of the group.
+       * fieldN: The first field name.
+       */
+      {
+        _id: "$Age",
+        // Group by Age
+        avgSalary: {
+          $avg: "$Salary"
+        },
+        minSalary: {
+          $min: "$Salary"
+        },
+        maxSalary: {
+          $max: "$Salary"
+        }
+      }
+  }
+]
